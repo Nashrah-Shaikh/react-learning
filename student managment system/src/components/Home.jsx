@@ -1,41 +1,35 @@
-import React, { useEffect,useState } from "react"; //It is a react library 
-import { Link } from "react-router-dom";
+import { useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
-  const [todo,setTodo] = useState([])
-  const getToday = () => {
-    console.log("today Function data")
-  }
+  const [userList, setUserList]= useState([])
+  const fetchData =async()=>{
+    try{
+      const users = await fetch("https://jsonplaceholder.typicode.com/users")
+      const jsonList = await users.json()
+      setUserList(jsonList)
+      console.log(jsonList)
 
-  function getTomorrow(){
-    console.log("Tomorrow Function")
-  }
-  const getTodo = async () => {
-    try {
-      const getTodoData = await fetch(
-        "https://jsonplaceholder.typicode.com/users",
-      );
-      const data = await getTodoData.json();
-      setTodo(data)
-      console.log("todoData", data);
-    } catch (error) {
-      console.log("error", error);
+    }catch(err){
+      console.log("error",err)
     }
-  };
+  }
 
-  useEffect(() => {
-    getTodo();
-    getToday();
-    getTomorrow();
-  }, []);
-
-  
-  return <>{todo.map((result) => (<Link to={`/user/${result.id}`} key={result.id}>
-    <div className="container">
-    <p>{result.id}</p>
-    <h5>{result.name}</h5>
+  useEffect(()=> {
+    fetchData()
+  },[])
+  return (
+    // userList.map((res)=>(<>{}</>))
+    <div>
+     {userList?.map((result)=> (
+      <Link to={`/user/${result?.id}`} style={{display:"flex",gap:"10px"}} >
+      
+      <h3 >{result?.id}</h3>
+      <h3>{result?.website}</h3>
+      </Link>
+     ))}
     </div>
-  </Link>))}</>
-};
+  )
+}
 
-export default Home;
+export default Home

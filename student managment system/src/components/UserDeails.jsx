@@ -1,34 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
+import { useParams } from 'react-router-dom'
+import { useEffect, useState} from 'react'
 const UserDeails = () => {
-  const { id } = useParams();
-  const [details,setDeatils] = useState(null)
-  const fetchDetails = async () => {
-    try {
-      const fetchUser = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${id}`,
-      );
-    const data = await fetchUser.json();
-    console.log("userDeatails",data)
-    setDeatils(data)
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+const {id}= useParams()
+console.log("id-number",id) 
+const [showData, setShowData] = useState(null)
+const fetchDetails=async() => {
+  try{
+    const userdetails = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+   
+    const Jsondata = await userdetails.json()
+    console.log(Jsondata)
+    setShowData(Jsondata)
+  }catch(error){
+    console.log("error",error)
 
-  useEffect(() => {
-    fetchDetails()
-  },[])
-  return <div>
+  }
+} 
+
+useEffect(() => {
+fetchDetails()
+},[])
+  return (
     <div>
-    <div>Name:<span>{details?.name}</span></div>
-    <div>Username:<span>{details?.username}</span></div>
-    <div>Phone NO:<span>{details?.phone}</span></div>
-    <div>Email:<span>{details?.email}</span></div>
-    
+      <h4>Name:{showData?.name}</h4>
+      <h4>Username:{showData?.username}</h4>
+      <h4>Phone Number:{showData?.phone}</h4>
+      <p>Address:{showData?.address.city}</p>
+      <p>company:{showData?.company.name}</p>
+      
     </div>
-  </div>;
-};
+  )
+}
 
-export default UserDeails;
+export default UserDeails
+
+
+
