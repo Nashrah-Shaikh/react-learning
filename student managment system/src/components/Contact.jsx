@@ -10,7 +10,7 @@ const Contact = () => {
     name:name,
     last:lastName
     }
-    console.log(`kuchbhi:${name}, ${lastName}`)
+    console.log(`${name}, ${lastName}`)
     console.log("call payload",payload)
  }
   return (
