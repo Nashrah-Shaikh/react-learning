@@ -38,13 +38,4 @@ const Contact = () => {
   )
 }  
 
-//const Contact = () => {
- // const [passward, setpassward] = useState()
-  //return(
-  //  <div>
-   //  <form
-   // </div>
-  //)
-//}
-
 export default Contact
