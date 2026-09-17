@@ -1,0 +1,32 @@
+.active{
+  color: red;
+}
+
+.not-active{
+  color: green;
+}
+.container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form{
+  margin: 10px;
+  border:1px solid black
+}
+
+.form-input{
+  margin: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.sbt-btn{
+  padding: 8px;
+  margin: 5px;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
+  font-size: 15px;
+}
