@@ -26,6 +26,7 @@ const Home = () => {
       
       <h3 >{result?.id}</h3>
       <h3>{result?.website}</h3>
+      <h3>{result?.name}</h3>
       </Link>
      ))}
     </div>
