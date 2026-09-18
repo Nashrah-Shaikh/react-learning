@@ -21,13 +21,14 @@ const Home = () => {
   return (
     // userList.map((res)=>(<>{}</>))
     <div>
-     {userList?.map((result)=> (
-      <Link to={`/user/${result?.id}`} style={{display:"flex",gap:"10px"}} >
-      
-      <h3 >{result?.id}</h3>
-      <h3>{result?.website}</h3>
-      <h3>{result?.name}</h3>
-      </Link>
+     {userList?.map((result)=>(
+      <div>
+        <Link to={`/user/${result?.id}`}>
+        <h4>{result?.id}</h4>
+        <h4>{result?.name}</h4>
+        </Link>
+        
+      </div>
      ))}
     </div>
   )
