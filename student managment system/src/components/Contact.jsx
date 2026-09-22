@@ -1,63 +1,64 @@
-import { useState } from "react"
+import {useState} from 'react'
 import axios from 'axios'
 
-const Contact = () => {
- const [title,setTitle] = useState("")
- const [body, setBody] = useState("");
- const [userId,setUserId] = useState();
- const [showdata, setShowdata] = useState(null);
 
- const handleSubmit = async (e) => {
-    e.preventDefault()
-    const payload = {
-    title:title,
-    body:body,
-    userId:parseInt(userId)
+const Contact = () => {
+  const [id, setID] = useState()
+  const [title, setTitle] = useState()
+  const [body, setBody] = useState()
+  const [showpost, setShowpost]= useState(null)
+  const [loading, setLoading] = useState(false)
+  const submitdata =async (e)=>{
+    e.preventDefault() 
+    console.log(`${id}, ${body}, ${title} `)
+    const playload = {
+      userId : parseInt(id),
+      title: title,
+      body: body
     }
-    console.log(`${userId}, ${title}, ${body}`)
-    console.log("call payload",payload)
+    console.log("playLoad",playload)
+    setLoading(true)
     try {
-      const {data} = await axios.post(`https://jsonplaceholder.typicode.com/posts`,payload)
-      console.log("success data",data)
-      setShowdata(data)
+      const {data}= await axios.post("https://jsonplaceholder.typicode.com/posts",playload)
+      console.log(data)
+      setShowpost(data)
     } catch (error) {
-      console.log("post error---->",error)
+      console.log("error", error)
     }
- }
+    setLoading(false)
+  }
+  
   return (
-    <>
-      <form onSubmit={handleSubmit} className="form">
-        <div className="form-input">
-        <label htmlFor="UserId" >
-          UserId
-        </label>
-        <input id="UserId" type="number" value={userId} onChange={(e) => setUserId(e.target.value)} />
-        </div>
-        <div className="form-input">
-        <label htmlFor="title" >
-          Title
-        </label>
-        <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div className="form-input">
-        <lable htmlFor="body">
-          Body
-          </lable>
-          <input value={body} onChange={(a) => setBody(a.target.value)} />
+    <div>
+      <form onSubmit={submitdata}>
+        <div>
+        <lable htmlFor="userID" >UserId:</lable>
+        <input type="number" name="userId" value={id} onChange={(e) => setID(e.target.value)}/>
+        
         </div>
         <div>
-          <button className="sbt-btn">Submit</button>
+        <lable htmlFor="title" >Title:</lable>
+        <input name="title" value={title} onChange={(e)=> setTitle(e.target.value)} />
         </div>
-        {showdata === null ?<div>There is no data yet</div>:
         <div>
-          <h2>title:{showdata?.title}</h2>
-          <h4>Body:{showdata?.body}</h4>
+        <lable htmlFor="body" >Body:</lable>
+        <input name="body" value={body} onChange={(e)=>setBody(e.target.value)}/>
         </div>
-        }
+        <div>
+          <button>Submit</button>
+        </div>
       </form>
-      </>
-    
+      <div>
+        {loading?<div>loading....</div>:showpost== null ? <div>there is no data yet</div>:
+        <div> 
+          <h2>Title:{showpost?.title}</h2>
+          <h2>Body:{showpost?.body}</h2>
+          <h2>UserId:{showpost?.userId}</h2>
+          </div>}
+      </div>
+    </div>
   )
-}  
+}
 
 export default Contact
+
