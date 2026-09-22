@@ -1,17 +1,16 @@
 
 import { useParams } from 'react-router-dom'
 import { useEffect, useState} from 'react'
+import axios from 'axios'
 const UserDeails = () => {
-const {name}= useParams()
-console.log("id-number",name) 
+const {id}= useParams()
+console.log("id-number",id) 
 const [showData, setShowData] = useState(null)
 const fetchDetails=async() => {
   try{
-    const userdetails = await fetch(`https://jsonplaceholder.typicode.com/users/${name}`)
-   
-    const Jsondata = await userdetails.json()
-    console.log(Jsondata)
-    setShowData(Jsondata)
+    const userdetails = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+    console.log(userdetails)
+    setShowData(userdetails?.data)
   }catch(error){
     console.log("error",error)
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 const Aboutshow = () => {
     const {id}= useParams()
@@ -7,10 +8,9 @@ const Aboutshow = () => {
     const [list, setList] = useState()
     const showdata= async() => {
         try {
-            const fetchdata = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-            const jsondata = await fetchdata.json()
-            console.log(jsondata)
-            setList(jsondata)
+            const fetchdata = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            setList(fetchdata?.data)
+            console.log(fetchdata)
         } catch (error) {
             console.log("error",error)
         }
