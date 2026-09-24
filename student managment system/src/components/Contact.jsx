@@ -32,16 +32,16 @@ const Contact = () => {
     <div>
       <form onSubmit={submitdata}>
         <div>
-        <lable htmlFor="userID" >UserId:</lable>
+        <label htmlFor="userID" >UserId:</label>
         <input type="number" name="userId" value={id} onChange={(e) => setID(e.target.value)}/>
         
         </div>
         <div>
-        <lable htmlFor="title" >Title:</lable>
+        <label htmlFor="title" >Title:</label>
         <input name="title" value={title} onChange={(e)=> setTitle(e.target.value)} />
         </div>
         <div>
-        <lable htmlFor="body" >Body:</lable>
+        <label htmlFor="body" >Body:</label>
         <input name="body" value={body} onChange={(e)=>setBody(e.target.value)}/>
         </div>
         <div>
