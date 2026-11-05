@@ -6,6 +6,7 @@ import About from './components/About'
 import Aboutshow from './components/Aboutshow'
 import Navbar from './components/Navbar'
 import Contact from './components/Contact'
+import Form from './components/Form'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/about" element={<About/>}/>
       <Route path="/about/:id" element={<Aboutshow/>}/>
       <Route path="/contact" element={<Contact/>}/>
+      <Route path="/form" element={<Form/>}/>
     </Routes>
     </>
   )

@@ -27,13 +27,16 @@ const Contact = () => {
     }
     setLoading(false)
   }
+  const handleChange = (event)=>{
+   setID(event.target.value)
+  }
   
   return (
     <div>
       <form onSubmit={submitdata}>
         <div>
         <label htmlFor="userID" >UserId:</label>
-        <input type="number" name="userId" value={id} onChange={(e) => setID(e.target.value)}/>
+        <input type="number" name="userId" value={id} onChange={handleChange}/>
         
         </div>
         <div>
@@ -55,6 +58,7 @@ const Contact = () => {
           <h2>Body:{showpost?.body}</h2>
           <h2>UserId:{showpost?.userId}</h2>
           </div>}
+          
       </div>
     </div>
   )

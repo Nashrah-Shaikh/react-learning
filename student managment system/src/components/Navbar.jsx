@@ -17,6 +17,14 @@ const Navbar = () => {
       >
         contact
       </NavLink>
+      <NavLink
+        className={({ isActive }) => (isActive ? "active" : "not-active")}
+        to="/form"
+      >
+        Form
+      </NavLink>
+      
+      
     </div>
   );
 };
