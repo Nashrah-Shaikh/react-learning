@@ -108,7 +108,7 @@ const Form = () => {
             <h2>DueDatw:{show?.dueDate}</h2>
             <h2>Title:{show?.title}</h2>
             <h2>Priority:{show?.priority}</h2>
-            <h2>Discription:{show?.discription}</h2>
+            <h2>Discription:{show?.description}</h2>
         </div>
         <div> 
             <Todoservice getSingleData={getSingleData} refresh={refresh}/>
