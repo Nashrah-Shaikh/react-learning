@@ -7,6 +7,7 @@ function App() {
 
   return (
     <>
+    <h3>hello wold</h3>
       <Lists />
     </>
   )

@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { CreatTry } from "../contex/TryContex";
 
 const Lists = () => {
   const [showlist, setShowlist] = useState([]);
   const [task, setTask] = useState("");
   const [updateBtn,setUpdateBtn] = useState(false)
   const  [trindex,setTrindex] = useState()
+  const {name} = useContext(CreatTry);
+  // console.log("myvalue:",myValue)
   const todolist = (e) => {
     e.preventDefault();
     setShowlist((pre) => {
       if (!pre.includes(task)) {
         return [...pre, task];
       }else{
-        alert("this item is alread exist")
+        alert("this item is already exist")
         return [...pre]
       }
     });
@@ -49,13 +52,10 @@ const Lists = () => {
       <form onSubmit={updateBtn?updateTask:todolist}>
         <div>
           <label htmlFor="task">Task</label>
-          <input
-            id="task"
-            type="text"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
+          <input id="task" type="text" value={task} onChange={(e) => setTask(e.target.value)}
           />
-          {updateBtn?<button>Update</button>:
+          {updateBtn?
+          <button>Update</button>:
           <button>Save</button>}
         </div>
       </form>
@@ -70,6 +70,7 @@ const Lists = () => {
           </div>
         ))}
       </div>
+      <div>vals:{name}</div>
     </div>
   );
 };
