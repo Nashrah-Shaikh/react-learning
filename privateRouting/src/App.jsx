@@ -7,12 +7,14 @@ import PublicRoute from "./Routing/public-route";
 import PrivateRoute from "./Routing/private-route";
 import AdminRoute from "./Routing/admin-route";
 import Aiprompt from "./components/Aiprompt";
+import Moviedetails from "./components/Moviedetails";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+      <Route path="/moviedetails/:id" element={<PrivateRoute><Moviedetails /></PrivateRoute>} />
       <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
       <Route path="/aiprompt" element={<PrivateRoute><Aiprompt/></PrivateRoute>}/>
     </Routes>

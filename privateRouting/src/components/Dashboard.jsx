@@ -1,15 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Authcontext } from '../context/Context';
 import { useNavigate } from 'react-router';
+import {CastDetails} from '../context/MovieContext'
+import { Link } from "react-router"
 import axios from 'axios'
 
 const Dashboard = () => {
   const [show, setShow] = useState([])
+  const {setCast} = useContext(CastDetails)
   const movielist = async()=>{
     try {
       const {data} = await axios.get("https://jsonfakery.com/movies/simple-paginate")
       console.log(data.data)
       setShow(data.data)
+
     } catch (error) {
       console.log("err", error)
       
@@ -23,6 +27,14 @@ const Dashboard = () => {
     setAuthUsers(false)
     navigate('/login');
     // window.location.reload()
+  }
+
+  const castData = (result) => {
+     console.log("castdetails",result)
+     navigate(`/moviedetails/${result?.id}`)
+     setCast(result?.casts)
+     
+
   }
   useEffect (()=>{
     movielist()
@@ -40,6 +52,7 @@ const Dashboard = () => {
             <h4>release_date:{result?.release_date}</h4>
             <h3>language:{result?.original_language}</h3>
             <p>overview:{result?.overview}</p>
+            <div onClick={() => castData(result)} >CastDetails{result?.movie_id}</div>
             
           </div>
         ))}
