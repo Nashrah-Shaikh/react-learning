@@ -2,6 +2,8 @@ import {useContext, useState} from 'react'
 import { useNavigate } from 'react-router'
 import {Authcontext} from "../context/Context"
 import axios from "axios"
+import "../App.css";
+
 
 
 const Login = () => {
@@ -50,7 +52,9 @@ const Login = () => {
   }
   return (
     <div>
-      <h3>Login</h3>
+      <div className="logincontainer" >
+      <h2>Login</h2>
+      
       <form onSubmit={login}>
         <div>
         <label htmlFor="email">Enter Email:</label>
@@ -61,14 +65,16 @@ const Login = () => {
           <input id="password" type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
         </div>
         <div>
-        <button>Login</button>
+        
         </div>
         
         
         
       </form>
+      <button>Login</button>
       <button onClick ={admin}>admin</button>
       <button onClick ={signup}>Sign UP</button>
+      </div>
       
       
       

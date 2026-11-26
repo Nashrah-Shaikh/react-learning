@@ -9,6 +9,7 @@ import AdminRoute from "./Routing/admin-route";
 import Aiprompt from "./components/Aiprompt";
 import Moviedetails from "./components/Moviedetails";
 import Signup from "./components/Signup";
+import "./App.css";
 
 const App = () => {
   return (
