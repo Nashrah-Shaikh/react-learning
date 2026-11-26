@@ -51,30 +51,36 @@ const Login = () => {
     navigate('/signup');
   }
   return (
-    <div>
+    <div >
       <div className="logincontainer" >
-      <h2>Login</h2>
+        <h2>Hello!</h2>
+        
       
-      <form onSubmit={login}>
-        <div>
+      
+      <form >
+        <div className="box2">
+        <div className="box1">
         <label htmlFor="email">Enter Email:</label>
-        <input id="email" type="email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
+        <input id="email" type="email" placeholder='Enter Your Email' value={email} onChange={(e)=> setEmail(e.target.value)}/>
         </div>
-        <div>
+        <div className="box1">
           <label htmlFor="password">Enter Password:</label>
-          <input id="password" type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+          <input id="password" type="password" placeholder='Password' value={password} onChange={(e)=> setPassword(e.target.value)}/>
         </div>
-        <div>
+        
         
         </div>
         
         
         
       </form>
-      <button>Login</button>
-      <button onClick ={admin}>admin</button>
-      <button onClick ={signup}>Sign UP</button>
+      <button onClick={login}>Login</button>
+      <button onClick ={admin}>Admin</button>
+      <button onClick ={signup}>Sign Up</button>
+
+      <p className="box1">Forgot password</p>
       </div>
+      
       
       
       
