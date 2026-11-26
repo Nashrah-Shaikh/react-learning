@@ -6,7 +6,7 @@ export const AuthProvider = ({children})=>{
 const [authUsers,setAuthUsers] = useState(false)
 const [adminUser, setAdminUser] = useState(false)
 const auths = {
-    Users: authUsers,
+    Users: authUsers || localStorage.getItem("token"),
     Admin:adminUser,
     setAuthUsers,
     setAdminUser

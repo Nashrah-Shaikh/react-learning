@@ -23,9 +23,9 @@ const Dashboard = () => {
   const {setAuthUsers} = useContext(Authcontext);
   const navigate = useNavigate()
   const logout = () => {
-    // localStorage.removeItem("auth")
+    localStorage.removeItem("token")
     setAuthUsers(false)
-    navigate('/login');
+    navigate('/');
     // window.location.reload()
   }
 
